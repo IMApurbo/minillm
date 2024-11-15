@@ -1,15 +1,10 @@
 Language Models
 ===============
-
-[![PyPI version](https://badge.fury.io/py/languagemodels.svg)](https://badge.fury.io/py/languagemodels)
-[![docs](https://img.shields.io/badge/docs-online-brightgreen)](https://languagemodels.netlify.app/)
-[![x64 Build](https://github.com/jncraton/languagemodels/actions/workflows/build.yml/badge.svg)](https://github.com/jncraton/languagemodels/actions/workflows/build.yml)
-[![ARM64 Build](https://github.com/jncraton/languagemodels/actions/workflows/pi.yml/badge.svg)](https://github.com/jncraton/languagemodels/actions/workflows/pi.yml)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jncraton/languagemodels/blob/master/examples/translate.ipynb)
+[![x64 Build](https://github.com/IMApurbo/minillm/actions/workflows/build.yml/badge.svg)](https://github.com/IMApurbo/minillm/actions/workflows/build.yml)
+[![ARM64 Build](https://github.com/IMApurbo/minillm/actions/workflows/pi.yml/badge.svg)](https://github.com/IMApurbo/minillm/actions/workflows/pi.yml)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/IMApurbo/minillm/blob/master/examples/translate.ipynb)
 
 Python building blocks to explore large language models in as little as 512MB of RAM
-
-![Translation hello world example](media/hello.gif)
 
 This package makes using large language models from Python as simple as possible. All inference is performed locally to keep your data private by default.
 
@@ -19,14 +14,14 @@ Installation and Getting Started
 This package can be installed using the following command:
 
 ```sh
-pip install languagemodels
+pip install minillm
 ```
 
 Once installed, you should be able to interact with the package in Python as follows:
 
 ```python
->>> import languagemodels as lm
->>> lm.do("What color is the sky?")
+>>> import minillm as ml
+>>> ml.do("What color is the sky?")
 'The color of the sky is blue.'
 ```
 
@@ -40,19 +35,19 @@ Here are some usage examples as Python REPL sessions. This should work in the RE
 ### Instruction Following
 
 ```python
->>> import languagemodels as lm
+>>> import minillm as ml
 
->>> lm.do("Translate to English: Hola, mundo!")
+>>> ml.do("Translate to English: Hola, mundo!")
 'Hello, world!'
 
->>> lm.do("What is the capital of France?")
+>>> ml.do("What is the capital of France?")
 'Paris.'
 ```
 
 Outputs can be restricted to a list of choices if desired:
 
 ```python
->>> lm.do("Is Mars larger than Saturn?", choices=["Yes", "No"])
+>>> ml.do("Is Mars larger than Saturn?", choices=["Yes", "No"])
 'No'
 ```
 
@@ -61,12 +56,12 @@ Outputs can be restricted to a list of choices if desired:
 The base model should run quickly on any system with 512MB of memory, but this memory limit can be increased to select more powerful models that will consume more resources. Here's an example:
 
 ```python
->>> import languagemodels as lm
->>> lm.do("If I have 7 apples then eat 5, how many apples do I have?")
+>>> import minillm as ml
+>>> ml.do("If I have 7 apples then eat 5, how many apples do I have?")
 'You have 8 apples.'
->>> lm.config["max_ram"] = "4gb"
+>>> ml.config["max_ram"] = "4gb"
 4.0
->>> lm.do("If I have 7 apples then eat 5, how many apples do I have?")
+>>> ml.do("If I have 7 apples then eat 5, how many apples do I have?")
 'I have 2 apples left.'
 ```
 
@@ -75,23 +70,23 @@ The base model should run quickly on any system with 512MB of memory, but this m
 If you have an NVIDIA GPU with CUDA available, you can opt in to using the GPU for inference:
 
 ```python
->>> import languagemodels as lm
+>>> import minillm as ml
 >>> lm.config["device"] = "auto"
 ```
 
 ### Text Completions
 
 ```python
->>> import languagemodels as lm
+>>> import minillm as ml
 
->>> lm.complete("She hid in her room until")
+>>> ml.complete("She hid in her room until")
 'she was sure she was safe'
 ```
 
 ### Chat
 
 ```python
->>> lm.chat('''
+>>> ml.chat('''
 ...      System: Respond as a helpful assistant.
 ...
 ...      User: What time is it?
@@ -106,8 +101,8 @@ If you have an NVIDIA GPU with CUDA available, you can opt in to using the GPU f
 A model tuned on Python code is included. It can be used to complete code snippets.
 
 ```python
->>> import languagemodels as lm
->>> lm.code("""
+>>> import minillm as ml
+>>> ml.code("""
 ... a = 2
 ... b = 5
 ...
@@ -121,22 +116,22 @@ A model tuned on Python code is included. It can be used to complete code snippe
 Helper functions are provided to retrieve text from external sources that can be used to augment prompt context.
 
 ```python
->>> import languagemodels as lm
+>>> import minillm as ml
 
->>> lm.get_wiki('Chemistry')
+>>> ml.get_wiki('Chemistry')
 'Chemistry is the scientific study...
 
->>> lm.get_weather(41.8, -87.6)
+>>> ml.get_weather(41.8, -87.6)
 'Partly cloudy with a chance of rain...
 
->>> lm.get_date()
+>>> ml.get_date()
 'Friday, May 12, 2023 at 09:27AM'
 ```
 
 Here's an example showing how this can be used (compare to previous chat example):
 
 ```python
->>> lm.chat(f'''
+>>> ml.chat(f'''
 ...      System: Respond as a helpful assistant. It is {lm.get_date()}
 ...
 ...      User: What time is it?
@@ -151,17 +146,15 @@ Here's an example showing how this can be used (compare to previous chat example
 Semantic search is provided to retrieve documents that may provide helpful context from a document store.
 
 ```python
->>> import languagemodels as lm
->>> lm.store_doc(lm.get_wiki("Python"), "Python")
->>> lm.store_doc(lm.get_wiki("C language"), "C")
->>> lm.store_doc(lm.get_wiki("Javascript"), "Javascript")
->>> lm.get_doc_context("What does it mean for batteries to be included in a language?")
+>>> import minillm as ml
+>>> ml.store_doc(ml.get_wiki("Python"), "Python")
+>>> ml.store_doc(ml.get_wiki("C language"), "C")
+>>> ml.store_doc(ml.get_wiki("Javascript"), "Javascript")
+>>> ml.get_doc_context("What does it mean for batteries to be included in a language?")
 'From Python document: It is often described as a "batteries included" language due to its comprehensive standard library.Guido van Rossum began working on Python in the late 1980s as a successor to the ABC programming language and first released it in 1991 as Python 0.9.
 
 From C document: It was designed to be compiled to provide low-level access to memory and language constructs that map efficiently to machine instructions, all with minimal runtime support.'
 ```
-
-[Full documentation](https://languagemodels.netlify.app/)
 
 ### Speed
 
@@ -196,11 +189,11 @@ Commercial Use
 This package itself is licensed for commercial use, but the models used may not be compatible with commercial use. In order to use this package commercially, you can filter models by license type using the `require_model_license` function.
 
 ```python
->>> import languagemodels as lm
->>> lm.config['instruct_model']
+>>> import minillm as ml
+>>> ml.config['instruct_model']
 'LaMini-Flan-T5-248M-ct2-int8'
->>> lm.require_model_license("apache|bsd|mit")
->>> lm.config['instruct_model']
+>>> ml.require_model_license("apache|bsd|mit")
+>>> ml.config['instruct_model']
 'flan-t5-base-ct2-int8'
 ```
 
