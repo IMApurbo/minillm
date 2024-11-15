@@ -4,14 +4,14 @@ import json
 import re
 from typing import overload
 
-from superllm.config import config
-from superllm.inference import (
+from minillm.config import config
+from minillm.inference import (
     generate,
     rank_instruct,
     parse_chat,
     list_tokens,
 )
-from superllm import embeddings
+from minillm import embeddings
 
 docs = embeddings.RetrievalContext()
 
