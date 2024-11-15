@@ -1,8 +1,8 @@
 """A simple CLI chatbot"""
 
-import languagemodels as lm
+import minillm as ml
 
-prompt = f"System: Reply as a helpful assistant. Currently {lm.get_date()}."
+prompt = f"System: Reply as a helpful assistant. Currently {ml.get_date()}."
 
 while True:
     user_message = input("\nUser: ")
@@ -13,7 +13,7 @@ while True:
 
     prompt += "\n\nAssistant:"
 
-    response = lm.chat(prompt)
+    response = ml.chat(prompt)
     print(f"\nAssistant: {response}")
 
     prompt += f" {response}"
