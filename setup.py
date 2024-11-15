@@ -4,14 +4,14 @@ with open("readme.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="superllm",
+    name="minirllm",
     version="0.22.0",
-    author="Jon Craton",
-    author_email="jon@joncraton.com",
+    author="AKM Korishee Apurbo",
+    author_email="bandinvisible8@gmail.com",
     description="Simple inference for large language models",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/jncraton/languagemodels",
+    url="https://github.com/IMApurbo/minillm",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
