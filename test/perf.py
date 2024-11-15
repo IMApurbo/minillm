@@ -1,4 +1,4 @@
-import languagemodels as lm
+import minillm as ml
 import time
 import json
 import os
@@ -17,12 +17,12 @@ print(f"Memory used before loading models: {mem_used_gb():.2f}GB")
 
 print("\n# Completion Test\n")
 
-print(f'{lm.complete("They ran until")=}')
+print(f'{ml.complete("They ran until")=}')
 
 print("\n# Chat Test\n")
 
 print(
-    lm.chat(
+    ml.chat(
         """
 System: Respond helpfully. It is Monday
 
@@ -48,7 +48,7 @@ accuracy = 0
 
 start = time.perf_counter_ns()
 
-lm.do("Test first run time")
+ml.do("Test first run time")
 
 print(f"Initialization time: {(time.perf_counter_ns() - start) / 1e6:.0f}ms")
 
@@ -58,7 +58,7 @@ start = time.perf_counter_ns()
 chars_generated = 0
 
 for test in tests:
-    response = lm.do(test[0])
+    response = ml.do(test[0])
     chars_generated += len(response)
     if test[1].lower() in response.lower():
         accuracy += 1 / len(tests)
@@ -76,7 +76,7 @@ print(f"Overall accuracy: {accuracy:.2f}")
 
 print(f"Memory used after running inference: {mem_used_gb():.2f}GB")
 
-max_ram = lm.config["max_ram"]
+max_ram = ml.config["max_ram"]
 print(
     f"Memory used after all tests: {mem_used_gb():.2f}GB (must be under {max_ram:.2f}GB)"
 )
