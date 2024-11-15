@@ -3,7 +3,7 @@ from huggingface_hub import hf_hub_download, snapshot_download
 from tokenizers import Tokenizer
 import ctranslate2
 
-from superllm.config import config, models
+from minillm.config import config, models
 
 
 modelcache = {}
