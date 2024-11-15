@@ -9,21 +9,21 @@ A number of demonstration question are completed to demonstrate the available
 functionality.
 """
 
-import languagemodels as lm
+import minillm as ml
 
 
 def assist(question):
-    context = lm.get_doc_context(question)
+    context = ml.get_doc_context(question)
 
-    return lm.do(f"Answer using context: {context} Question: {question}")
+    return ml.do(f"Answer using context: {context} Question: {question}")
 
 
 lat, lon = (41.8, -87.6)
 
-lm.store_doc(lm.get_wiki("Python language"), "Python")
-lm.store_doc(lm.get_wiki("Planet Saturn"), "Saturn")
-lm.store_doc(lm.get_weather(lat, lon), "Weather")
-lm.store_doc(lm.get_date(), "Time")
+ml.store_doc(ml.get_wiki("Python language"), "Python")
+ml.store_doc(ml.get_wiki("Planet Saturn"), "Saturn")
+ml.store_doc(ml.get_weather(lat, lon), "Weather")
+ml.store_doc(ml.get_date(), "Time")
 
 questions = [
     "What day of the week is it?",
