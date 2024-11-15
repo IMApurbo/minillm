@@ -4,8 +4,8 @@ with open("readme.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="minirllm",
-    version="0.22.0",
+    name="minillm",
+    version="1.0",
     author="AKM Korishee Apurbo",
     author_email="bandinvisible8@gmail.com",
     description="Simple inference for large language models",
