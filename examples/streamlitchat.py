@@ -2,13 +2,10 @@
 
 Run this application using `streamlit run {filename}`
 
-A live version of this bot is available here:
-
-https://jncraton-languagemodels-examplesstreamlitchat-s4uj7z.streamlit.app/
 """
 
 import streamlit as st
-import languagemodels as lm
+import minilml as ml
 
 st.title("Chatbot")
 
@@ -27,8 +24,8 @@ if st.session_state.message:
     st.session_state.dialog += f"User: {st.session_state.message}\n\nAssistant: "
     st.session_state.message = ""
 
-    # Prompt LLM to get response
-    response = lm.chat(f"{st.session_state.dialog}")
+    # Prompt llm to get response
+    response = ml.chat(f"{st.session_state.dialog}")
 
     # Display full dialog
     st.session_state.dialog += response + "\n\n"
