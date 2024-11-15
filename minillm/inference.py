@@ -5,8 +5,8 @@ import os
 import sys
 from time import perf_counter
 
-from superllm.models import get_model, get_model_info
-from superllm.config import config
+from minillm.models import get_model, get_model_info
+from minillm.config import config
 
 
 class InferenceException(Exception):
