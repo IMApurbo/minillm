@@ -1,7 +1,5 @@
 Language Models
 ===============
-[![x64 Build](https://github.com/IMApurbo/minillm/actions/workflows/build.yml/badge.svg)](https://github.com/IMApurbo/minillm/actions/workflows/build.yml)
-[![ARM64 Build](https://github.com/IMApurbo/minillm/actions/workflows/pi.yml/badge.svg)](https://github.com/IMApurbo/minillm/actions/workflows/pi.yml)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/IMApurbo/minillm/blob/master/examples/translate.ipynb)
 
 Python building blocks to explore large language models in as little as 512MB of RAM
