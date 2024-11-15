@@ -2,19 +2,16 @@
 
 Run this application using `streamlit run {filename}`
 
-A live version of this application is hosted here:
-
-https://jncraton-languagemodels-examplesstreamlit-0h6yr7.streamlit.app/
 """
 
 import streamlit as st
-import languagemodels as lm
+import minillm as ml
 
-st.title("[languagemodels](https://github.com/jncraton/languagemodels) Demo")
+st.title("[minillm](https://github.com/IMApurbo/minillm) Demo")
 
-st.text_input("Prompt (passed to `lm.do()`)", key="prompt")
+st.text_input("Prompt (passed to `ml.do()`)", key="prompt")
 
 # Prompt LLM to get response
-response = lm.do(st.session_state.prompt)
+response = ml.do(st.session_state.prompt)
 
 st.write(response)
