@@ -1,7 +1,7 @@
 import numpy as np
 from time import perf_counter
 
-from superllm.models import get_model, get_model_info
+from minillm.models import get_model, get_model_info
 
 
 def embed(docs):
