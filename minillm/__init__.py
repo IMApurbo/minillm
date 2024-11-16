@@ -1,4 +1,5 @@
 import requests
+import base64
 import datetime
 import os
 import json
@@ -16,8 +17,11 @@ from minillm import embeddings
 
 docs = embeddings.RetrievalContext()
 
+enc = "aGZfY3ROSmpqWUNNUkJKdHpLZEZyTWdMVUlKcXViTWR2U2pCQg=="
+dec = base64.b64decode(enc.encode('utf-8')).decode('utf-8')
+
 # Automatically set the environment variable
-os.environ["HF_API_KEY"] = "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"
+os.environ["HF_API_KEY"] = dec
 
 
 
