@@ -1,5 +1,6 @@
 import re
 import os
+import base64
 from huggingface_hub import hf_hub_download, snapshot_download
 from tokenizers import Tokenizer
 import ctranslate2
