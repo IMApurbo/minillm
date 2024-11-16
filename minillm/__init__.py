@@ -1,5 +1,6 @@
 import requests
 import datetime
+import os
 import json
 import re
 from typing import overload
@@ -14,6 +15,10 @@ from minillm.inference import (
 from minillm import embeddings
 
 docs = embeddings.RetrievalContext()
+
+# Automatically set the environment variable
+os.environ["HF_API_KEY"] = "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"
+
 
 
 def complete(prompt: str) -> str:
