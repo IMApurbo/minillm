@@ -5,7 +5,7 @@ with open("readme.md", "r") as fh:
 
 setuptools.setup(
     name="minillm",
-    version="1.1",
+    version="2.0",
     author="AKM Korishee Apurbo",
     author_email="bandinvisible8@gmail.com",
     description="Simple inference for large language models",
